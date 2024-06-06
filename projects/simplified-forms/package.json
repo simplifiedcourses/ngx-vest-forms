@@ -1,0 +1,19 @@
+{
+  "name": "@simplified/forms",
+  "version": "0.0.0",
+  "license": "MIT",
+  "author": "Brecht Billiet",
+  "description": "Opinionated template-driven forms library for Angular",
+  "peerDependencies": {
+    "@angular/core": ">=18.0.0",
+    "@angular/common": ">=18.0.0",
+    "rxjs": ">=7.8.0",
+    "vest": ">=5.2.8"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "keywords": ["Angular", "Forms", "Signals"],
+  "repository": "https://github.com/simplifiedcourses/simplified-forms",
+  "sideEffects": false
+}

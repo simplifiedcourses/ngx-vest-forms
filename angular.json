@@ -35,6 +35,36 @@
             ],
             "karmaConfig": "projects/simplified-forms/karma.conf.js"
           }
+        },
+        "storybook": {
+          "builder": "@storybook/angular:start-storybook",
+          "options": {
+            "configDir": "projects/simplified-forms/.storybook",
+            "browserTarget": "@simplified/forms:build",
+            "compodoc": true,
+            "compodocArgs": [
+              "-e",
+              "json",
+              "-d",
+              "projects/simplified-forms"
+            ],
+            "port": 6006
+          }
+        },
+        "build-storybook": {
+          "builder": "@storybook/angular:build-storybook",
+          "options": {
+            "configDir": "projects/simplified-forms/.storybook",
+            "browserTarget": "@simplified/forms:build",
+            "compodoc": true,
+            "compodocArgs": [
+              "-e",
+              "json",
+              "-d",
+              "projects/simplified-forms"
+            ],
+            "outputDir": "dist/storybook/@simplified/forms"
+          }
         }
       }
     },

@@ -18,7 +18,7 @@
     "test:ci": "npm run test:lib",
     "semantic-release": "semantic-release"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/animations": "^18.0.1",
     "@angular/common": "^18.0.1",
@@ -81,6 +81,8 @@
     "preset": "jest-preset-angular",
     "setupFilesAfterEnv": ["./projects/simplified-forms/src/setup-jest.ts"],
     "globalSetup": "jest-preset-angular/global-setup"
+  },
+  "publishConfig": {
+    "access": "public"
   }
-
 }

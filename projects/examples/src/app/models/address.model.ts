@@ -1,4 +1,4 @@
-import { DeepRequired , DeepPartial } from '@simplified/forms';
+import { DeepRequired , DeepPartial } from 'simplified-forms';
 
 export type AddressModel = DeepPartial<{
   street: string;

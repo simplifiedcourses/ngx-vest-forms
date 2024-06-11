@@ -8,7 +8,7 @@
     [
       "@semantic-release/npm",
       {
-        "pkgRoot": "dist/@simplified/forms"
+        "pkgRoot": "dist/simplified-forms"
       }
     ],
     "@semantic-release/git",

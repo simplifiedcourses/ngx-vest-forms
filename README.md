@@ -1,4 +1,4 @@
-# @simplified/forms
+# simplified-forms
 
 ### Introduction
 
@@ -15,7 +15,7 @@ across different frameworks and technologies.
 You can install the package by running:
 
 ```shell
-npm i @simplified/forms
+npm i simplified-forms
 ```
 
 ### Creating a simple form
@@ -32,7 +32,7 @@ And we crate 2 inputs with the `name` attribute and the `[ngModel]` input.
 **Do note that we are not using the banana in the box syntax but only tha square brackets, resulting in a unidirectional dataflow**
 
 ```typescript
-import { simplifiedForms, DeepPartial } from '@simplified/forms';
+import { simplifiedForms, DeepPartial } from 'simplified-forms';
 
 // A form model is always deep partial because angular will create it over time organically
 type MyFormModel = DeepPartial<{
@@ -109,7 +109,7 @@ Making a typo in those can result in a time-consuming endeavor. For this we have
 A shape is an object where the `simplifiedForm` can validate to. It is a deep required of the form model:
 
 ```typescript
-import { DeepPartial, DeepRequired, simplifiedForms } from '@simplified/forms';
+import { DeepPartial, DeepRequired, simplifiedForms } from 'simplified-forms';
 
 type MyFormModel = DeepPartial<{
   generalInfo: {
@@ -242,7 +242,7 @@ We can bind the computed signal to the `disabled` directive of Angular.
 
 ### Validations
 
-The absolute gem in @simplified/forms is the flexibility in validations without writing any boilerplate.
+The absolute gem in simplified-forms is the flexibility in validations without writing any boilerplate.
 The only dependency this lib has is [vest.js](https://vestjs.dev). An awesome lightweight validation framework.
 You can use it on the backend/frontend/Angular/react etc...
 
@@ -282,7 +282,7 @@ and a form control `street` the field would be: `addresses.billingAddress.street
 
 This syntax should be self-explanatory and the entire enforcements guidelines can be found on [vest.js](https://vestjs.dev).
 
-Now let's connect this to our form. This is the biggest pain that @simplified/forms will fix for you: **Connecting Vest suites to Angular**
+Now let's connect this to our form. This is the biggest pain that simplified-forms will fix for you: **Connecting Vest suites to Angular**
 
 ```typescript
 class MyComponent {
@@ -303,7 +303,7 @@ class MyComponent {
 </form>
 ```
 
-That's it. Validations are completely wired now. Because @simplified/forms will hook into the 
+That's it. Validations are completely wired now. Because simplified-forms will hook into the 
 `[ngModel]` and `ngModelGroup` attributes, and create ngValidators automatically.
 
 It goes like this: 
@@ -536,7 +536,7 @@ also create an ngValidator on root level, that listens to the ROOT_FORM field.
 To make this work we need to use the field in the vest suite like this:
 
 ```typescript
-import { ROOT_FORM } from '@simplified/forms';
+import { ROOT_FORM } from 'simplified-forms';
 
 test(ROOT_FORM, 'Brecht is not 30 anymore', () => {
   enforce(

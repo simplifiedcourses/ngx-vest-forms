@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "@simplified/forms": {
+    "simplified-forms": {
       "projectType": "library",
       "root": "projects/simplified-forms",
       "sourceRoot": "projects/simplified-forms/src",
@@ -40,7 +40,7 @@
           "builder": "@storybook/angular:start-storybook",
           "options": {
             "configDir": "projects/simplified-forms/.storybook",
-            "browserTarget": "@simplified/forms:build",
+            "browserTarget": "simplified-forms:build",
             "compodoc": true,
             "compodocArgs": [
               "-e",
@@ -55,7 +55,7 @@
           "builder": "@storybook/angular:build-storybook",
           "options": {
             "configDir": "projects/simplified-forms/.storybook",
-            "browserTarget": "@simplified/forms:build",
+            "browserTarget": "simplified-forms:build",
             "compodoc": true,
             "compodocArgs": [
               "-e",
@@ -63,7 +63,7 @@
               "-d",
               "projects/simplified-forms"
             ],
-            "outputDir": "dist/storybook/@simplified/forms"
+            "outputDir": "dist/storybook/simplified-forms"
           }
         }
       }

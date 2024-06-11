@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule, KeyValuePipe } from '@angular/common';
-import { arrayToObject, simplifiedForms, simplifiedFormsViewProviders } from '@simplified/forms';
+import { arrayToObject, simplifiedForms, simplifiedFormsViewProviders } from 'simplified-forms';
 
 @Component({
   selector: 'phonenumbers',

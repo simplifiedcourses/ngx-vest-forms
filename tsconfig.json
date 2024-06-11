@@ -12,8 +12,8 @@
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
     "paths": {
-      "@simplified/forms": [
-        "dist/@simplified/forms"
+      "simplified-forms": [
+        "dist/simplified-forms"
       ],
     },
     "declaration": false,

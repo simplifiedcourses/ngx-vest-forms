@@ -9,7 +9,7 @@ import { LukeService } from '../../luke.service';
 import { PhonenumbersComponent } from '../phonenumbers/phonenumbers.component';
 import { AddressModel } from '../../models/address.model';
 import { createPurchaseValidationSuite } from '../../validations/purchase.validations';
-import { simplifiedForms, ValidateRootFormDirective } from '@simplified/forms';
+import { simplifiedForms, ValidateRootFormDirective } from 'simplified-forms';
 import { SwapiService } from '../../swapi.service';
 
 @Component({

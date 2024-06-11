@@ -3,7 +3,7 @@ import { componentWrapperDecorator, Meta, moduleMetadata, StoryObj } from '@stor
 import { FormDirective } from './form.directive';
 import { Component, computed, signal } from '@angular/core';
 import { simplifiedForms } from '../exports';
-import { DeepPartial, DeepRequired, ROOT_FORM } from '@simplified/forms';
+import { DeepPartial, DeepRequired, ROOT_FORM } from 'simplified-forms';
 import { enforce, omitWhen, only, staticSuite, test } from 'vest';
 
 type FormModel = DeepPartial<{

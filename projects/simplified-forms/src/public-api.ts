@@ -1,5 +1,5 @@
 /*
- * Public API Surface of @simplified/forms
+ * Public API Surface of simplified-forms
  */
 
 export { simplifiedForms, simplifiedFormsViewProviders } from './lib/exports';

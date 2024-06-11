@@ -1,7 +1,7 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core';
 
 import { AddressModel } from '../../models/address.model';
-import { simplifiedForms, simplifiedFormsViewProviders } from '@simplified/forms';
+import { simplifiedForms, simplifiedFormsViewProviders } from 'simplified-forms';
 
 @Component({
   selector: 'address',

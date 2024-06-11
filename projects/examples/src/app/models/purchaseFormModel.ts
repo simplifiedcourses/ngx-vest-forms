@@ -1,6 +1,6 @@
 import { AddressModel, addressShape } from './address.model';
 import { PhonenumberModel, phonenumberShape } from './phonenumber.model';
-import { DeepPartial, DeepRequired } from '@simplified/forms';
+import { DeepPartial, DeepRequired } from 'simplified-forms';
 
 export type PurchaseFormModel = DeepPartial<{
   userId: string;

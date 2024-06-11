@@ -14,7 +14,7 @@
     "build:lib": "ng build @simplified/forms --configuration=production",
     "build:ci": "npm run build:lib && npm run build:app",
     "postbuild:lib": "copyfiles README.md dist/@simplified/forms",
-    "test:lib": "ng test simplified-forms --no-watch --no-progress --browsers=ChromeHeadlessCI",
+    "test:lib": "jest",
     "test:ci": "npm run test:lib",
     "semantic-release": "semantic-release"
   },

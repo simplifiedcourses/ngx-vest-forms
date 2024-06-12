@@ -8,17 +8,17 @@ import {
     ValueChangeEvent
 } from '@angular/forms';
 import {
-    debounceTime,
-    distinctUntilChanged,
-    filter,
-    map,
-    Observable,
-    of,
-    ReplaySubject,
-    switchMap,
-    take,
-    tap,
-    zip
+  debounceTime,
+  distinctUntilChanged,
+  filter,
+  map,
+  Observable,
+  of,
+  ReplaySubject, shareReplay,
+  switchMap,
+  take,
+  tap,
+  zip
 } from 'rxjs';
 import { StaticSuite } from 'vest';
 import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
@@ -78,7 +78,8 @@ export class FormDirective<T extends Record<string, any>> {
      */
     public readonly idle$ = this.statusChanges$.pipe(
         filter(v => v !== 'PENDING'),
-        distinctUntilChanged()
+        distinctUntilChanged(),
+        shareReplay(1)
     );
 
     private readonly valueChanges$ = this.ngForm.form.events.pipe(

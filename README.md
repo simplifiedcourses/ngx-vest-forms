@@ -2,10 +2,9 @@
 
 ### Introduction
 
-The name says it all, simple form development for complex solutions.
-This lightweight package is built on Angular **template-driven forms** and gives us the ability
-to create unidirectional forms without any boilerplate.
-This package is meant for complex forms with a high focus on validations and conditionals.
+This is a very lightweight adapter for Angular template-driven forms and [vestjs](https://vestjs.dev).
+This package gives us the ability to create unidirectional forms without any boilerplate.
+It is meant for complex forms with a high focus on complex validations and conditionals.
 
 All the validations are asynchronous and use [vestjs](https://vestjs.dev) suites that can be re-used
 across different frameworks and technologies.

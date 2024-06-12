@@ -1,4 +1,4 @@
-import { DeepRequired } from 'simplified-forms';
+import { DeepRequired } from 'ngx-vest-forms';
 
 export type PhonenumberModel = Partial<{
   addValue: string;

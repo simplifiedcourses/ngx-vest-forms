@@ -10,10 +10,10 @@
     "watch": "ng build --watch --configuration development",
     "test": "jest",
     "prepare": "husky install",
-    "build:app": "ng build examples --configuration=production --base-href=/simplified-forms/",
-    "build:lib": "ng build simplified-forms --configuration=production",
+    "build:app": "ng build examples --configuration=production --base-href=/ngx-vest-forms/",
+    "build:lib": "ng build ngx-vest-forms --configuration=production",
     "build:ci": "npm run build:lib && npm run build:app",
-    "postbuild:lib": "copyfiles README.md dist/simplified-forms",
+    "postbuild:lib": "copyfiles README.md dist/ngx-vest-forms",
     "test:lib": "jest",
     "test:ci": "npm run test:lib",
     "semantic-release": "semantic-release"
@@ -75,11 +75,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/simplifiedcourses/simplified-forms.git"
+    "url": "https://github.com/simplifiedcourses/ngx-vest-forms.git"
   },
   "jest": {
     "preset": "jest-preset-angular",
-    "setupFilesAfterEnv": ["./projects/simplified-forms/src/setup-jest.ts"],
+    "setupFilesAfterEnv": ["./projects/ngx-vest-forms/src/setup-jest.ts"],
     "globalSetup": "jest-preset-angular/global-setup"
   },
   "publishConfig": {

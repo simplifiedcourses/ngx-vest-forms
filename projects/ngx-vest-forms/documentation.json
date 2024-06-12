@@ -10,7 +10,7 @@
         {
             "name": "FormDirectiveDemoComponent",
             "id": "component-FormDirectiveDemoComponent-89c5b2ce7c8aec92d4e5da4084671186a8a754532bef4b0d149ac4918acec152409e3100926c69b45704216c4d03768946ae91e2629e76814eb61577dc114b24",
-            "file": "projects/simplified-forms/src/lib/directives/form.directive.stories.ts",
+            "file": "projects/ngx-vest-forms/src/lib/directives/form.directive.stories.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
@@ -49,7 +49,7 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/simplified-forms/src/lib/directives/form.directive.stories.ts",
+                "file": "projects/ngx-vest-forms/src/lib/directives/form.directive.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<FormDirectiveDemoComponent>",
@@ -59,7 +59,7 @@
                 "name": "preview",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/simplified-forms/.storybook/preview.ts",
+                "file": "projects/ngx-vest-forms/.storybook/preview.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Preview",
@@ -73,7 +73,7 @@
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
                 "rawtype": "StoryObj<FormDirective<any>>",
-                "file": "projects/simplified-forms/src/lib/directives/form.directive.stories.ts",
+                "file": "projects/ngx-vest-forms/src/lib/directives/form.directive.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -82,24 +82,24 @@
         ],
         "enumerations": [],
         "groupedVariables": {
-            "projects/simplified-forms/src/lib/directives/form.directive.stories.ts": [
+            "projects/ngx-vest-forms/src/lib/directives/form.directive.stories.ts": [
                 {
                     "name": "meta",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/simplified-forms/src/lib/directives/form.directive.stories.ts",
+                    "file": "projects/ngx-vest-forms/src/lib/directives/form.directive.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<FormDirectiveDemoComponent>",
                     "defaultValue": "{\n  title: 'FormDirective',\n  component: FormDirectiveDemoComponent,\n  parameters: {\n    // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout\n    layout: 'fullscreen',\n  },\n}"
                 }
             ],
-            "projects/simplified-forms/.storybook/preview.ts": [
+            "projects/ngx-vest-forms/.storybook/preview.ts": [
                 {
                     "name": "preview",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/simplified-forms/.storybook/preview.ts",
+                    "file": "projects/ngx-vest-forms/.storybook/preview.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Preview",
@@ -110,13 +110,13 @@
         "groupedFunctions": {},
         "groupedEnumerations": {},
         "groupedTypeAliases": {
-            "projects/simplified-forms/src/lib/directives/form.directive.stories.ts": [
+            "projects/ngx-vest-forms/src/lib/directives/form.directive.stories.ts": [
                 {
                     "name": "Story",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
                     "rawtype": "StoryObj<FormDirective<any>>",
-                    "file": "projects/simplified-forms/src/lib/directives/form.directive.stories.ts",
+                    "file": "projects/ngx-vest-forms/src/lib/directives/form.directive.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -131,7 +131,7 @@
         "status": "low",
         "files": [
             {
-                "filePath": "projects/simplified-forms/.storybook/preview.ts",
+                "filePath": "projects/ngx-vest-forms/.storybook/preview.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -141,7 +141,7 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/simplified-forms/src/lib/directives/form.directive.stories.ts",
+                "filePath": "projects/ngx-vest-forms/src/lib/directives/form.directive.stories.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "FormDirectiveDemoComponent",
@@ -150,7 +150,7 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/simplified-forms/src/lib/directives/form.directive.stories.ts",
+                "filePath": "projects/ngx-vest-forms/src/lib/directives/form.directive.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",

@@ -9,13 +9,13 @@ import { LukeService } from '../../luke.service';
 import { PhonenumbersComponent } from '../phonenumbers/phonenumbers.component';
 import { AddressModel } from '../../models/address.model';
 import { createPurchaseValidationSuite } from '../../validations/purchase.validations';
-import { simplifiedForms, ValidateRootFormDirective } from 'simplified-forms';
+import { vestForms, ValidateRootFormDirective } from 'ngx-vest-forms';
 import { SwapiService } from '../../swapi.service';
 
 @Component({
   selector: 'purchase-form',
   standalone: true,
-  imports: [JsonPipe, simplifiedForms, AddressComponent, PhonenumbersComponent, ValidateRootFormDirective],
+  imports: [JsonPipe, vestForms, AddressComponent, PhonenumbersComponent, ValidateRootFormDirective],
   templateUrl: './purchase-form.component.html',
   styleUrls: ['./purchase-form.component.scss']
 })

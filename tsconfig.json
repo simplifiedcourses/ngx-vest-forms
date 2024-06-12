@@ -12,8 +12,8 @@
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
     "paths": {
-      "simplified-forms": [
-        "dist/simplified-forms"
+      "ngx-vest-forms": [
+        "dist/ngx-vest-forms"
       ],
     },
     "declaration": false,

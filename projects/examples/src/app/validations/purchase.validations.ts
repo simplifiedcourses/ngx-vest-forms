@@ -4,7 +4,7 @@ import { addressValidations } from './address.validations';
 import { phonenumberValidations } from './phonenumber.validations';
 import { SwapiService } from '../swapi.service';
 import { fromEvent, lastValueFrom, takeUntil } from 'rxjs';
-import { ROOT_FORM } from 'simplified-forms';
+import { ROOT_FORM } from 'ngx-vest-forms';
 
 export const createPurchaseValidationSuite = (swapiService: SwapiService) => {
     return staticSuite(

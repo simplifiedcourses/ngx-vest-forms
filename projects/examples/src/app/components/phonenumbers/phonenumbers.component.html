@@ -2,7 +2,7 @@
   <span>Phonenumbers</span>
   <div ngModelGroup="values">
     @for (item of values|keyvalue; track item.key) {
-      <div simplified-control-wrapper>
+      <div sc-control-wrapper>
         <div class="relative">
           <input type="text" name="{{item.key}}" [ngModel]="values[item.key]" placeholder="Type phone number"/>
           <button type="button" (click)="removePhonenumber(item.key)"
@@ -13,7 +13,7 @@
       </div>
     }
   </div>
-  <div simplified-control-wrapper>
+  <div sc-control-wrapper>
     <div class="relative">
       <input type="text" [(ngModel)]="addValue" name="addValue" placeholder="Type phone number"/>
       <button type="button" (click)="addPhonenumber()"

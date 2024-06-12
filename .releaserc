@@ -8,7 +8,7 @@
     [
       "@semantic-release/npm",
       {
-        "pkgRoot": "dist/simplified-forms"
+        "pkgRoot": "dist/ngx-vest-forms"
       }
     ],
     "@semantic-release/git",

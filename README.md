@@ -1,4 +1,4 @@
-# simplified-forms
+# ngx-vest-forms
 
 ### Introduction
 
@@ -15,7 +15,7 @@ across different frameworks and technologies.
 You can install the package by running:
 
 ```shell
-npm i simplified-forms
+npm i ngx-vest-forms
 ```
 
 ### Creating a simple form
@@ -25,14 +25,14 @@ I want a form with a form group called `general` info that has 2 properties:
 - `firstName`
 - `lastName`
 
-We need to import the `simplifiedForms` const in the imports section of the `@Component` decorator.
-Now we can apply the `simplifiedForm` directive to the `form` tag and listen to the `formValueChange` output to feed our signal.
+We need to import the `vestForms` const in the imports section of the `@Component` decorator.
+Now we can apply the `scVestForm` directive to the `form` tag and listen to the `formValueChange` output to feed our signal.
 In the form we create a form group for `generalInfo`  with the `ngModelGroup` directive.
 And we crate 2 inputs with the `name` attribute and the `[ngModel]` input.
 **Do note that we are not using the banana in the box syntax but only tha square brackets, resulting in a unidirectional dataflow**
 
 ```typescript
-import { simplifiedForms, DeepPartial } from 'simplified-forms';
+import { vestForms, DeepPartial } from 'ngx-vest-forms';
 
 // A form model is always deep partial because angular will create it over time organically
 type MyFormModel = DeepPartial<{
@@ -43,9 +43,9 @@ type MyFormModel = DeepPartial<{
 }>
 
 @Component({
-  imports: [simplifiedForms],
+  imports: [vestForms],
   template: `
-<form simplifiedForm 
+<form scVestForm 
       (formValueChange)="formValue.set($event)"
       (ngSubmit)="onSubmit()">
       <div ngModelGroup="generalInfo">
@@ -93,7 +93,7 @@ form = {
 }
 ```
 
-The `simplifiedForm` directive offers some basic outputs for us though:
+The `scVestForm` directive offers some basic outputs for us though:
 
 | Output               | Description                                                                                                                             | 
 |----------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
@@ -106,10 +106,10 @@ The `simplifiedForm` directive offers some basic outputs for us though:
 
 Template-driven forms are type-safe, but not in the `name` attributes or `ngModelGroup` attributes.
 Making a typo in those can result in a time-consuming endeavor. For this we have introduced shapes.
-A shape is an object where the `simplifiedForm` can validate to. It is a deep required of the form model:
+A shape is an object where the `scVestForm` can validate to. It is a deep required of the form model:
 
 ```typescript
-import { DeepPartial, DeepRequired, simplifiedForms } from 'simplified-forms';
+import { DeepPartial, DeepRequired, vestForms } from 'ngx-vest-forms';
 
 type MyFormModel = DeepPartial<{
   generalInfo: {
@@ -126,9 +126,9 @@ export const myFormModelShape: DeepRequired<MyFormModel> = {
 };
 
 @Component({
-  imports: [simplifiedForms],
+  imports: [vestForms],
   template: `
-<form simplifiedForm 
+<form scVestForm 
       [formShape]="shape"
       (formValueChange)="formValue.set($event)"
       (ngSubmit)="onSubmit()">
@@ -149,7 +149,7 @@ export class MyComponent {
 }
 ```
 
-By passing the shape to the `formShape` input the `simplifiedForm` will validate the actual form value
+By passing the shape to the `formShape` input the `scVestForm` will validate the actual form value
 against the form shape every time the form changes, but only when Angular is in devMode.
 
 Making a typo in the name attribute or an ngModelGroup attribute would result in runtime errors.
@@ -242,7 +242,7 @@ We can bind the computed signal to the `disabled` directive of Angular.
 
 ### Validations
 
-The absolute gem in simplified-forms is the flexibility in validations without writing any boilerplate.
+The absolute gem in ngx-vest-forms is the flexibility in validations without writing any boilerplate.
 The only dependency this lib has is [vest.js](https://vestjs.dev). An awesome lightweight validation framework.
 You can use it on the backend/frontend/Angular/react etc...
 
@@ -282,7 +282,7 @@ and a form control `street` the field would be: `addresses.billingAddress.street
 
 This syntax should be self-explanatory and the entire enforcements guidelines can be found on [vest.js](https://vestjs.dev).
 
-Now let's connect this to our form. This is the biggest pain that simplified-forms will fix for you: **Connecting Vest suites to Angular**
+Now let's connect this to our form. This is the biggest pain that ngx-vest-forms will fix for you: **Connecting Vest suites to Angular**
 
 ```typescript
 class MyComponent {
@@ -293,7 +293,7 @@ class MyComponent {
 
 ```html
 
-<form simplifiedForm
+<form scVestForm
       [formShape]="shape"
       [formValue]="formValue"
       [suite]="suite"
@@ -303,7 +303,7 @@ class MyComponent {
 </form>
 ```
 
-That's it. Validations are completely wired now. Because simplified-forms will hook into the 
+That's it. Validations are completely wired now. Because ngx-vest-forms will hook into the 
 `[ngModel]` and `ngModelGroup` attributes, and create ngValidators automatically.
 
 It goes like this: 
@@ -321,7 +321,7 @@ just like it would with a regular angular form.
 #### Showing validation errors
 
 Now we want to show the validation errors in a consistent way.
-For that we have provided the `simplified-control-wrapper` attribute component.
+For that we have provided the `sc-control-wrapper` attribute component.
 
 You can use it on:
 - elements that hold `ngModelGroup`
@@ -338,13 +338,13 @@ Let's update our form:
 
 ```html
 
-<div ngModelGroup="generalInfo" simplified-control-wrapper>
-  <div simplified-control-wrapper>
+<div ngModelGroup="generalInfo" sc-control-wrapper>
+  <div sc-control-wrapper>
     <label>First name</label
     <input type="text" name="firstName" [ngModel]="formValue().generalInformation?.firstName"/>
   </div>
 
-  <div simplified-control-wrapper>
+  <div sc-control-wrapper>
     <label>Last name</label>
     <input type="text" name="lastName" [ngModel]="formValue().generalInformation?.lastName"/>
   </div>
@@ -511,7 +511,7 @@ wherever we want.
 ```html
 {{ errors()?.['rootForm'] }} <!-- render the errors on the rootForm -->
 {{ errors() }} <!-- render all the errors -->
-<form simplifiedForm 
+<form scVestForm 
       [formValue]="formValue()"
       [validateRootForm]="true"
       [formShape]="shape"
@@ -536,7 +536,7 @@ also create an ngValidator on root level, that listens to the ROOT_FORM field.
 To make this work we need to use the field in the vest suite like this:
 
 ```typescript
-import { ROOT_FORM } from 'simplified-forms';
+import { ROOT_FORM } from 'ngx-vest-forms';
 
 test(ROOT_FORM, 'Brecht is not 30 anymore', () => {
   enforce(
@@ -559,8 +559,29 @@ Todo
 
 #### Form array validations
 
-Todo
+An example can be found [in this simplified courses article](https://blog.simplified.courses/template-driven-forms-with-form-arrays/)
+
+We can look in `projects/examples/src/app/validations/phonenumber.validations.ts` to see an example on the validations part.
+
 
 ### Child form components
 
-Todo
+Big forms result in big files. It makes sense to split them up.
+For instance an address form can be reused, so we want to create a child component for that.
+We have to make sure that this child component can access the ngForm.
+For that we have to use the `vestFormViewProviders` from `ngx-vest-forms`
+
+```typescript
+...
+import { vestForms, vestFormsViewProviders } from 'ngx-vest-forms';
+
+@Component({
+  ...
+  viewProviders: [vestFormsViewProviders]
+})
+export class AddressComponent {
+  @Input() address?: AddressModel;
+}
+```
+
+You can check the examples in the github repo

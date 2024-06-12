@@ -3,23 +3,23 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "simplified-forms": {
+    "ngx-vest-forms": {
       "projectType": "library",
-      "root": "projects/simplified-forms",
-      "sourceRoot": "projects/simplified-forms/src",
+      "root": "projects/ngx-vest-forms",
+      "sourceRoot": "projects/ngx-vest-forms/src",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/simplified-forms/ng-package.json"
+            "project": "projects/ngx-vest-forms/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/simplified-forms/tsconfig.lib.prod.json"
+              "tsConfig": "projects/ngx-vest-forms/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "projects/simplified-forms/tsconfig.lib.json"
+              "tsConfig": "projects/ngx-vest-forms/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
@@ -28,25 +28,25 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "codeCoverage": true,
-            "tsConfig": "projects/simplified-forms/tsconfig.spec.json",
+            "tsConfig": "projects/ngx-vest-forms/tsconfig.spec.json",
             "polyfills": [
               "zone.js",
               "zone.js/testing"
             ],
-            "karmaConfig": "projects/simplified-forms/karma.conf.js"
+            "karmaConfig": "projects/ngx-vest-forms/karma.conf.js"
           }
         },
         "storybook": {
           "builder": "@storybook/angular:start-storybook",
           "options": {
-            "configDir": "projects/simplified-forms/.storybook",
-            "browserTarget": "simplified-forms:build",
+            "configDir": "projects/ngx-vest-forms/.storybook",
+            "browserTarget": "ngx-vest-forms:build",
             "compodoc": true,
             "compodocArgs": [
               "-e",
               "json",
               "-d",
-              "projects/simplified-forms"
+              "projects/ngx-vest-forms"
             ],
             "port": 6006
           }
@@ -54,16 +54,16 @@
         "build-storybook": {
           "builder": "@storybook/angular:build-storybook",
           "options": {
-            "configDir": "projects/simplified-forms/.storybook",
-            "browserTarget": "simplified-forms:build",
+            "configDir": "projects/ngx-vest-forms/.storybook",
+            "browserTarget": "ngx-vest-forms:build",
             "compodoc": true,
             "compodocArgs": [
               "-e",
               "json",
               "-d",
-              "projects/simplified-forms"
+              "projects/ngx-vest-forms"
             ],
-            "outputDir": "dist/storybook/simplified-forms"
+            "outputDir": "dist/storybook/ngx-vest-forms"
           }
         }
       }

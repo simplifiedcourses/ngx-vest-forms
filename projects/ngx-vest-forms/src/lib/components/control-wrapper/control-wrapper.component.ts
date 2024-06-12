@@ -15,7 +15,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormDirective } from '../../directives/form.directive';
 
 @Component({
-    selector: '[simplified-control-wrapper]',
+    selector: '[sc-control-wrapper]',
     standalone: true,
     templateUrl: './control-wrapper.component.html',
     styleUrls: ['./control-wrapper.component.scss'],
@@ -40,7 +40,7 @@ export class ControlWrapperComponent implements AfterViewInit {
         return this.ngModelGroup ? this.ngModelGroup.control : this.ngModel?.control;
     }
 
-    @HostBinding('class.control-wrapper--invalid')
+    @HostBinding('class.sc-control-wrapper--invalid')
     public get invalid() {
         return this.control?.touched && this.errors;
     }

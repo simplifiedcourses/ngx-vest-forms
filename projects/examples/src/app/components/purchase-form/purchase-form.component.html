@@ -40,7 +40,7 @@
   </div>
 }
 
-<form class="mt-8" simplifiedForm (ngSubmit)="onSubmit()"
+<form class="mt-8" scVestForm (ngSubmit)="onSubmit()"
       [formValue]="formValue()"
       [validateRootForm]="true"
       [formShape]="shape"
@@ -51,31 +51,31 @@
       (formValueChange)="setFormValue($event)">
   <fieldset [disabled]="vm.loading">
     <h1 class="text-4xl">Purchase form</h1>
-    <div class="sm:col-span-2" simplified-control-wrapper>
+    <div class="sm:col-span-2" sc-control-wrapper>
       <label>
         <span>User id</span>
         <input placeholder="Type user id" type="text" [ngModel]="vm.formValue.userId" name="userId"/>
       </label>
     </div>
-    <div class="w-full" simplified-control-wrapper>
+    <div class="w-full" sc-control-wrapper>
       <label>
         <span>First name</span>
         <input placeholder="Type your first name" type="text" [ngModel]="vm.formValue.firstName" name="firstName"/>
       </label>
     </div>
-    <div class="w-full" simplified-control-wrapper>
+    <div class="w-full" sc-control-wrapper>
       <label>
         <span>Last name</span>
         <input placeholder="Type your last name" type="text" [ngModel]="vm.formValue.lastName" name="lastName"/>
       </label>
     </div>
-    <div class="w-full" simplified-control-wrapper>
+    <div class="w-full" sc-control-wrapper>
       <label>
         <span>Age</span>
         <input placeholder="Choose your age" type="number" [ngModel]="vm.formValue.age" name="age"/>
       </label>
     </div>
-    <div class="w-full" simplified-control-wrapper>
+    <div class="w-full" sc-control-wrapper>
       <label>
         <span>Emergency contact</span>
         <input placeholder="Type your emergency contact" type="text" [disabled]="vm.emergencyContactDisabled"
@@ -83,13 +83,13 @@
                name="emergencyContact"/>
       </label>
     </div>
-    <div class="sm:col-span-2" simplified-control-wrapper ngModelGroup="phonenumbers">
+    <div class="sm:col-span-2" sc-control-wrapper ngModelGroup="phonenumbers">
       <phonenumbers [values]="vm.formValue.phonenumbers?.values || {}">
       </phonenumbers>
     </div>
     <div
       class="sm:col-span-2 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-      <div class="" simplified-control-wrapper>
+      <div class="" sc-control-wrapper>
         <label><span>Gender</span></label>
         <div class="flex">
           <div class="radio-button mr-4">
@@ -125,7 +125,7 @@
         </div>
       </div>
       @if (vm.showGenderOther) {
-        <div class="sm:col-span-2" simplified-control-wrapper>
+        <div class="sm:col-span-2" sc-control-wrapper>
           <label>
             <span>Specify gender</span>
             <input type="text" [ngModel]="vm.formValue.genderOther"
@@ -135,15 +135,15 @@
       }
     </div>
 
-    <div class="sm:col-span-2" simplified-control-wrapper ngModelGroup="passwords">
+    <div class="sm:col-span-2" sc-control-wrapper ngModelGroup="passwords">
       <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
-        <div class="w-full" simplified-control-wrapper>
+        <div class="w-full" sc-control-wrapper>
           <label>
             <span>Password</span>
             <input placeholder="Type password" type="password" [ngModel]="vm.formValue.passwords?.password" name="password"/>
           </label>
         </div>
-        <div class="w-full" simplified-control-wrapper>
+        <div class="w-full" sc-control-wrapper>
           <label>
             <span>Confirm</span>
             <input placeholder="Confirm password" type="password" [ngModel]="vm.formValue.passwords?.confirmPassword"
@@ -153,7 +153,7 @@
       </div>
 
     </div>
-    <div class="sm:col-span-2" simplified-control-wrapper>
+    <div class="sm:col-span-2" sc-control-wrapper>
       <label>
         <span>Product</span>
         <select name="productId" [ngModel]="vm.formValue.productId">
@@ -163,19 +163,19 @@
         </select>
       </label>
     </div>
-    <div class="sm:col-span-2" simplified-control-wrapper ngModelGroup="addresses">
-      <div simplified-control-wrapper ngModelGroup="billingAddress">
+    <div class="sm:col-span-2" sc-control-wrapper ngModelGroup="addresses">
+      <div sc-control-wrapper ngModelGroup="billingAddress">
         <h3 class="text-2xl">Billing address</h3>
         <address [address]="vm.formValue.addresses?.billingAddress"></address>
       </div>
-      <label simplified-control-wrapper>
+      <label sc-control-wrapper>
         <span>Shipping address is different from billing address</span>
         <input type="checkbox"
                [ngModel]="vm.formValue.addresses?.shippingAddressDifferentFromBillingAddress"
                name="shippingAddressDifferentFromBillingAddress">
       </label>
       @if (vm.showShippingAddress) {
-        <div simplified-control-wrapper ngModelGroup="shippingAddress">
+        <div sc-control-wrapper ngModelGroup="shippingAddress">
           <h3 class="text-2xl">Shipping Address</h3>
           <address [address]="vm.shippingAddress"></address>
         </div>

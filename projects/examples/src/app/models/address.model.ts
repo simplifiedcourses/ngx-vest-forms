@@ -1,4 +1,4 @@
-import { DeepRequired , DeepPartial } from 'simplified-forms';
+import { DeepRequired , DeepPartial } from 'ngx-vest-forms';
 
 export type AddressModel = DeepPartial<{
   street: string;

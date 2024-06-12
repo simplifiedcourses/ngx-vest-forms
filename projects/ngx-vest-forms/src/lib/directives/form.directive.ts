@@ -27,7 +27,7 @@ import { cloneDeep, getAllFormErrors, mergeValuesAndRawValues, set } from '../ut
 import { validateShape } from '../utils/shape-validation';
 
 @Directive({
-    selector: 'form[simplifiedForm]',
+    selector: 'form[scVestForm]',
     standalone: true,
 })
 export class FormDirective<T extends Record<string, any>> {

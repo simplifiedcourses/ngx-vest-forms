@@ -1,8 +1,8 @@
 /*
- * Public API Surface of simplified-forms
+ * Public API Surface of ngx-vest-forms
  */
 
-export { simplifiedForms, simplifiedFormsViewProviders } from './lib/exports';
+export { vestForms, vestFormsViewProviders } from './lib/exports';
 export { DeepPartial } from './lib/utils/deep-partial';
 export { DeepRequired } from './lib/utils/deep-required';
 export {

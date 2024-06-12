@@ -2,8 +2,8 @@ import { componentWrapperDecorator, Meta, moduleMetadata, StoryObj } from '@stor
 
 import { FormDirective } from './form.directive';
 import { Component, computed, signal } from '@angular/core';
-import { simplifiedForms } from '../exports';
-import { DeepPartial, DeepRequired, ROOT_FORM } from 'simplified-forms';
+import { vestForms } from '../exports';
+import { DeepPartial, DeepRequired, ROOT_FORM } from 'ngx-vest-forms';
 import { enforce, omitWhen, only, staticSuite, test } from 'vest';
 
 type FormModel = DeepPartial<{
@@ -58,7 +58,7 @@ const formValidationSuite = staticSuite(
 
 @Component({
   template: `
-    <form simplifiedForm
+    <form vestForm
           (ngSubmit)="onSubmit()"
           [formValue]="formValue()"
           [validateRootForm]="true"
@@ -67,27 +67,27 @@ const formValidationSuite = staticSuite(
           (validChange)="formValid.set($event)"
           (errorsChange)="errors.set($event)"
           (formValueChange)="setFormValue($event)">
-      <div simplified-control-wrapper>
+      <div sc-control-wrapper>
         <label>
           <span>First name</span>
           <input placeholder="Type your first name" type="text" [ngModel]="vm.formValue.firstName" name="firstName"/>
         </label>
       </div>
-      <div simplified-control-wrapper>
+      <div sc-control-wrapper>
         <label>
           <span>Last name</span>
           <input placeholder="Type your last name" type="text" [ngModel]="vm.formValue.lastName" name="lastName"/>
         </label>
       </div>
-      <div simplified-control-wrapper ngModelGroup="passwords">
+      <div sc-control-wrapper ngModelGroup="passwords">
         <div>
-          <div simplified-control-wrapper>
+          <div sc-control-wrapper>
             <label>
               <span>Password</span>
               <input placeholder="Type password" type="password" [ngModel]="vm.formValue.passwords?.password" name="password"/>
             </label>
           </div>
-          <div simplified-control-wrapper>
+          <div sc-control-wrapper>
             <label>
               <span>Confirm</span>
               <input placeholder="Confirm password" type="password" [ngModel]="vm.formValue.passwords?.confirmPassword"
@@ -101,7 +101,7 @@ const formValidationSuite = staticSuite(
   `,
   imports: [
     FormDirective,
-    simplifiedForms
+    vestForms
   ],
   standalone: true
 })

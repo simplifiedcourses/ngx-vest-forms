@@ -1,5 +1,5 @@
 {
-  "name": "simplified-forms",
+  "name": "ngx-vest-forms",
   "version": "0.0.0",
   "license": "MIT",
   "author": "Brecht Billiet",
@@ -14,6 +14,6 @@
     "tslib": "^2.3.0"
   },
   "keywords": ["Angular", "Forms", "Signals"],
-  "repository": "https://github.com/simplifiedcourses/simplified-forms",
+  "repository": "https://github.com/simplifiedcourses/ngx-vest-forms",
   "sideEffects": false
 }

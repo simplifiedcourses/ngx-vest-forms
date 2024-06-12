@@ -1,8 +1,8 @@
-<div class="control-wrapper">
-  <div class="control-wrapper__content">
+<div class="sc-control-wrapper">
+  <div class="sc-control-wrapper__content">
     <ng-content></ng-content>
   </div>
-  <div class="control-wrapper__errors">
+  <div class="sc-control-wrapper__errors">
     <ul [hidden]="!invalid">
       @for (error of errors; track error) {
         <li>{{ error }}</li>

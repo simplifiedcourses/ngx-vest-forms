@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/simplifiedcourses/ngx-vest-forms/compare/v1.0.1...v1.0.2) (2024-06-12)
+
+
+### Bug Fixes
+
+* **form directive:** idle did not replayed the last value resulting in racing conditions ([430db01](https://github.com/simplifiedcourses/ngx-vest-forms/commit/430db017bf37efcb38458492359f6e69c6900202))
+
 ## [1.0.1](https://github.com/simplifiedcourses/ngx-vest-forms/compare/v1.0.0...v1.0.1) (2024-06-12)
 
 

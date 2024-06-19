@@ -16,6 +16,8 @@ jobs:
           cache: 'npm'
       - name: Install ⚙️
         run: npm ci
+      - name: Playwright install
+        run: npx playwright install
       - name: Build 🛠
         run: npm run build:ci
       - name: Test 📋

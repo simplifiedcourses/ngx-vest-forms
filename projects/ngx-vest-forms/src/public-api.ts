@@ -6,9 +6,17 @@ export { vestForms, vestFormsViewProviders } from './lib/exports';
 export { DeepPartial } from './lib/utils/deep-partial';
 export { DeepRequired } from './lib/utils/deep-required';
 export {
-  set, cloneDeep, getAllFormErrors, getFormControlField, getFormGroupField, mergeValuesAndRawValues
+  set,
+  cloneDeep,
+  getAllFormErrors,
+  getFormControlField,
+  getFormGroupField,
+  mergeValuesAndRawValues,
 } from './lib/utils/form-utils';
-export { validateShape, ShapeMismatchError } from './lib/utils/shape-validation';
+export {
+  validateShape,
+  ShapeMismatchError,
+} from './lib/utils/shape-validation';
 export { arrayToObject } from './lib/utils/array-to-object';
 export { ROOT_FORM } from './lib/constants';
 export { ControlWrapperComponent } from './lib/components/control-wrapper/control-wrapper.component';

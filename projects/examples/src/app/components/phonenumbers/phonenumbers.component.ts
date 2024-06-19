@@ -1,6 +1,10 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule, KeyValuePipe } from '@angular/common';
-import { arrayToObject, vestForms, vestFormsViewProviders } from 'ngx-vest-forms';
+import {
+  arrayToObject,
+  vestForms,
+  vestFormsViewProviders,
+} from 'ngx-vest-forms';
 
 @Component({
   selector: 'phonenumbers',
@@ -8,7 +12,7 @@ import { arrayToObject, vestForms, vestFormsViewProviders } from 'ngx-vest-forms
   imports: [CommonModule, vestForms, KeyValuePipe],
   templateUrl: './phonenumbers.component.html',
   styleUrls: ['./phonenumbers.component.scss'],
-  viewProviders: [vestFormsViewProviders]
+  viewProviders: [vestFormsViewProviders],
 })
 export class PhonenumbersComponent {
   @Input() public values: { [key: string]: string } = {};
@@ -22,7 +26,8 @@ export class PhonenumbersComponent {
 
   public removePhonenumber(key: string): void {
     const phonenumbers = Object.values(this.values).filter(
-      (v, index) => index !== Number(key));
+      (v, index) => index !== Number(key)
+    );
     this.values = arrayToObject(phonenumbers);
   }
 }

@@ -9,9 +9,9 @@ export class SwapiService {
     return this.httpClient.get(`https://swapi.dev/api/people/${id}`).pipe(
       map(() => true),
       catchError(() => of(false))
-    )
+    );
   }
   public searchUserById(id: string): Observable<any> {
-    return this.httpClient.get(`https://swapi.dev/api/people/${id}`)
+    return this.httpClient.get(`https://swapi.dev/api/people/${id}`);
   }
 }

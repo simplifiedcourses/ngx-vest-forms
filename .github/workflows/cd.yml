@@ -19,10 +19,16 @@ jobs:
           cache: 'npm'
       - name: Install ⚙️
         run: npm ci
+      - name: Playwright install
+        run: npx playwright install
       - name: Build 🛠
         run: npm run build:ci
       - name: Test 📋
         run: npm run test:ci
+      - name: Storybook
+        run: npm run storybook:build
+      - name: Integration test 📋
+        run: npm run test:storybook:ci
       - name: Publish 📢
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

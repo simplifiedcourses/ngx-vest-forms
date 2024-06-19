@@ -545,16 +545,76 @@ test(ROOT_FORM, 'Brecht is not 30 anymore', () => {
 });
 ```
 
-### Validation dependencies
-
-Sometimes we need to re-trigger validations of form controls or form groups because they are dependant on other form controls or form groups.
-For instance: A `confirmPassword` field is not required unless the `password` is filled in. Which means that when the `password` field gets a new value,
-we need to run the validations on `confirmPassword`.
 
 
-### Form arrays
+### Validation of dependant controls and or groups
 
-Todo
+Sometimes, form validations are dependent on the values of other form controls or groups.
+This scenario is common when a field's validity relies on the input of another field.
+A typical example is the `confirmPassword` field, which should only be validated if the `password` field is filled in.
+When the `password` field value changes, it necessitates re-validating the `confirmPassword` field to ensure
+consistency.
+
+Here's how you can handle validation dependencies with ngx-vest-forms and vest.js:
+
+
+Use Vest to create a suite where you define the conditional validations.
+For example, the `confirmPassword` field should only be validated when the `password` field is not empty.
+Additionally, you need to ensure that both fields match.
+
+```typescript
+import { enforce, omitWhen, staticSuite, test } from 'vest';
+import { MyFormModel } from '../models/my-form.model';
+
+export const myFormModelSuite = staticSuite((model: MyFormModel, field?: string) => {
+    if (field) {
+        only(field);
+    }
+
+    test('password', 'Password is required', () => {
+        enforce(model.password).isNotBlank();
+    });
+
+    omitWhen(!model.password, () => {
+        test('confirmPassword', 'Confirm password is required', () => {
+            enforce(model.confirmPassword).isNotBlank();
+        });
+    });
+
+    omitWhen(!model.password || !model.confirmPassword, () => {
+        test('passwords', 'Passwords do not match', () => {
+            enforce(model.confirmPassword).equals(model.password);
+        });
+    });
+});
+```
+
+Creating a validation config.
+The `scVestForm` has an input called `validationConfig`, that we can use to let the system know when to retrigger validations.
+
+```typescript
+protected validationConfig = {
+    password: ['passwords.confirmPassword']
+}
+```
+Here we see that when password changes, it needs to update the field `passwords.confirmPassword`.
+This validationConfig is completely dynamic, and can also be used for form arrays.
+
+```html
+
+<form scVestForm
+      ...
+      [validationConfig]="validationConfig">
+    <div ngModelGroup="passwords">
+        <label>Password</label>
+        <input type="password" name="password" [ngModel]="formValue().passwords?.password"/>
+
+        <label>Confirm Password</label>
+        <input type="password" name="confirmPassword" [ngModel]="formValue().passwords?.confirmPassword"/>
+    </div>
+</form>
+```
+
 
 #### Form array validations
 

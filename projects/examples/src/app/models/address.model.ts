@@ -1,4 +1,4 @@
-import { DeepRequired , DeepPartial } from 'ngx-vest-forms';
+import { DeepRequired, DeepPartial } from 'ngx-vest-forms';
 
 export type AddressModel = DeepPartial<{
   street: string;
@@ -6,11 +6,11 @@ export type AddressModel = DeepPartial<{
   city: string;
   zipcode: string;
   country: string;
-}>
+}>;
 export const addressShape: DeepRequired<AddressModel> = {
   street: '',
   number: '',
   city: '',
   zipcode: '',
-  country: ''
-}
+  country: '',
+};

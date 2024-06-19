@@ -9,7 +9,7 @@ import { vestForms, vestFormsViewProviders } from 'ngx-vest-forms';
   imports: [vestForms],
   viewProviders: [vestFormsViewProviders],
   templateUrl: './address.component.html',
-  styleUrls: ['./address.component.scss']
+  styleUrls: ['./address.component.scss'],
 })
 export class AddressComponent {
   @Input() address?: AddressModel;

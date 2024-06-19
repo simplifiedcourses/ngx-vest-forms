@@ -20,8 +20,8 @@ export type PurchaseFormModel = DeepPartial<{
     shippingAddress: AddressModel;
     billingAddress: AddressModel;
     shippingAddressDifferentFromBillingAddress: boolean;
-  }
-}>
+  };
+}>;
 
 export const purchaseFormShape: DeepRequired<PurchaseFormModel> = {
   userId: '',
@@ -32,14 +32,14 @@ export const purchaseFormShape: DeepRequired<PurchaseFormModel> = {
   addresses: {
     shippingAddress: addressShape,
     billingAddress: addressShape,
-    shippingAddressDifferentFromBillingAddress: true
+    shippingAddressDifferentFromBillingAddress: true,
   },
   passwords: {
     password: '',
-    confirmPassword: ''
+    confirmPassword: '',
   },
-  phonenumbers:phonenumberShape,
+  phonenumbers: phonenumberShape,
   gender: 'other',
   genderOther: '',
-  productId: ''
-}
+  productId: '',
+};

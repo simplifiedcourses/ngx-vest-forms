@@ -6,7 +6,7 @@ import { PurchaseFormComponent } from './components/purchase-form/purchase-form.
   imports: [PurchaseFormComponent],
   standalone: true,
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   title = 'purchase';

@@ -7,8 +7,8 @@ describe('validateShape function', () => {
       age: 30,
       address: {
         city: 'New York',
-        zip: 12345
-      }
+        zip: 12345,
+      },
     };
 
     const shape = {
@@ -16,8 +16,8 @@ describe('validateShape function', () => {
       age: 0,
       address: {
         city: '',
-        zip: 0
-      }
+        zip: 0,
+      },
     };
 
     expect(() => {
@@ -31,8 +31,8 @@ describe('validateShape function', () => {
       age: 30,
       addresss: {
         city: 'New York',
-        zip: 12345
-      }
+        zip: 12345,
+      },
     };
 
     const shape = {
@@ -41,17 +41,23 @@ describe('validateShape function', () => {
       // Intentional typo, should throw error
       address: {
         city: '',
-        zip: 0
-      }
+        zip: 0,
+      },
     };
 
     try {
       validateShape(formValue, shape);
     } catch (error) {
       expect(error).toBeInstanceOf(ShapeMismatchError);
-      expect((error as ShapeMismatchError).message).toContain(`[ngModelGroup] Mismatch: 'addresss'`);
-      expect((error as ShapeMismatchError).message).toContain(`[ngModel] Mismatch 'addresss.city'`);
-      expect((error as ShapeMismatchError).message).toContain(`[ngModel] Mismatch 'addresss.zip'`);
+      expect((error as ShapeMismatchError).message).toContain(
+        `[ngModelGroup] Mismatch: 'addresss'`
+      );
+      expect((error as ShapeMismatchError).message).toContain(
+        `[ngModel] Mismatch 'addresss.city'`
+      );
+      expect((error as ShapeMismatchError).message).toContain(
+        `[ngModel] Mismatch 'addresss.zip'`
+      );
     }
   });
 
@@ -61,8 +67,8 @@ describe('validateShape function', () => {
       age: 30,
       address: {
         city: 'New York',
-        zip: 12345
-      }
+        zip: 12345,
+      },
     };
 
     const shape = {
@@ -71,20 +77,22 @@ describe('validateShape function', () => {
       // Intentional typo, should throw error
       address: {
         city: '',
-        zip: 0
+        zip: 0,
       },
       // Intentional typo, should throw error
       contact: {
         email: '',
-        phone: ''
-      }
+        phone: '',
+      },
     };
 
     try {
       validateShape(formValue, shape);
     } catch (error) {
       expect(error).toBeInstanceOf(ShapeMismatchError);
-      expect((error as ShapeMismatchError).message).toContain('[ngModelGroup] Mismatch: \'contact\'');
+      expect((error as ShapeMismatchError).message).toContain(
+        "[ngModelGroup] Mismatch: 'contact'"
+      );
     }
   });
 });

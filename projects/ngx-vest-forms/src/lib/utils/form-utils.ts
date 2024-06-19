@@ -7,23 +7,23 @@ import { ROOT_FORM } from '../constants';
  * @param control
  */
 function getControlPath(
-    formGroup: FormGroup,
-    control: AbstractControl
+  formGroup: FormGroup,
+  control: AbstractControl
 ): string {
-    for (const key in formGroup.controls) {
-        if (formGroup.controls.hasOwnProperty(key)) {
-            const ctrl = formGroup.get(key);
-            if (ctrl instanceof FormGroup) {
-                const path = getControlPath(ctrl, control);
-                if (path) {
-                    return key + '.' + path;
-                }
-            } else if (ctrl === control) {
-                return key;
-            }
+  for (const key in formGroup.controls) {
+    if (formGroup.controls.hasOwnProperty(key)) {
+      const ctrl = formGroup.get(key);
+      if (ctrl instanceof FormGroup) {
+        const path = getControlPath(ctrl, control);
+        if (path) {
+          return key + '.' + path;
         }
+      } else if (ctrl === control) {
+        return key;
+      }
     }
-    return '';
+  }
+  return '';
 }
 
 /**
@@ -31,25 +31,22 @@ function getControlPath(
  * @param formGroup
  * @param control
  */
-function getGroupPath(
-    formGroup: FormGroup,
-    control: AbstractControl
-): string {
-    for (const key in formGroup.controls) {
-        if (formGroup.controls.hasOwnProperty(key)) {
-            const ctrl = formGroup.get(key);
-            if (ctrl === control) {
-                return key;
-            }
-            if (ctrl instanceof FormGroup) {
-                const path = getGroupPath(ctrl, control);
-                if (path) {
-                    return key + '.' + path;
-                }
-            }
+function getGroupPath(formGroup: FormGroup, control: AbstractControl): string {
+  for (const key in formGroup.controls) {
+    if (formGroup.controls.hasOwnProperty(key)) {
+      const ctrl = formGroup.get(key);
+      if (ctrl === control) {
+        return key;
+      }
+      if (ctrl instanceof FormGroup) {
+        const path = getGroupPath(ctrl, control);
+        if (path) {
+          return key + '.' + path;
         }
+      }
     }
-    return '';
+  }
+  return '';
 }
 
 /**
@@ -57,8 +54,11 @@ function getGroupPath(
  * @param rootForm
  * @param control
  */
-export function getFormControlField(rootForm: FormGroup, control: AbstractControl): string {
-    return getControlPath(rootForm, control);
+export function getFormControlField(
+  rootForm: FormGroup,
+  control: AbstractControl
+): string {
+  return getControlPath(rootForm, control);
 }
 
 /**
@@ -66,10 +66,12 @@ export function getFormControlField(rootForm: FormGroup, control: AbstractContro
  * @param rootForm
  * @param control
  */
-export function getFormGroupField(rootForm: FormGroup, control: AbstractControl): string {
-    return getGroupPath(rootForm, control);
+export function getFormGroupField(
+  rootForm: FormGroup,
+  control: AbstractControl
+): string {
+  return getGroupPath(rootForm, control);
 }
-
 
 /**
  * This RxJS operator merges the value of the form with the raw value.
@@ -77,34 +79,40 @@ export function getFormGroupField(rootForm: FormGroup, control: AbstractControl)
  * @param form
  */
 export function mergeValuesAndRawValues<T>(form: FormGroup): T {
-    // Retrieve the standard values (respecting references)
-    const value = { ...form.value };
+  // Retrieve the standard values (respecting references)
+  const value = { ...form.value };
 
-    // Retrieve the raw values (including disabled values)
-    const rawValue = form.getRawValue();
+  // Retrieve the raw values (including disabled values)
+  const rawValue = form.getRawValue();
 
-    // Recursive function to merge rawValue into value
-    function mergeRecursive(target: any, source: any) {
-        Object.keys(source).forEach(key => {
-            if (target[key] === undefined) {
-                // If the key is not in the target, add it directly (for disabled fields)
-                target[key] = source[key];
-            } else if (typeof source[key] === 'object' && source[key] !== null && !Array.isArray(source[key])) {
-                // If the value is an object, merge it recursively
-                mergeRecursive(target[key], source[key]);
-            }
-            // If the target already has the key with a primitive value, it's left as is to maintain references
-        });
-    }
+  // Recursive function to merge rawValue into value
+  function mergeRecursive(target: any, source: any) {
+    Object.keys(source).forEach((key) => {
+      if (target[key] === undefined) {
+        // If the key is not in the target, add it directly (for disabled fields)
+        target[key] = source[key];
+      } else if (
+        typeof source[key] === 'object' &&
+        source[key] !== null &&
+        !Array.isArray(source[key])
+      ) {
+        // If the value is an object, merge it recursively
+        mergeRecursive(target[key], source[key]);
+      }
+      // If the target already has the key with a primitive value, it's left as is to maintain references
+    });
+  }
 
-    mergeRecursive(value, rawValue);
-    return value;
+  mergeRecursive(value, rawValue);
+  return value;
 }
 
 type Primitive = undefined | null | boolean | string | number | Function;
 
 function isPrimitive(value: any): value is Primitive {
-    return value === null || (typeof value !== "object" && typeof value !== "function");
+  return (
+    value === null || (typeof value !== 'object' && typeof value !== 'function')
+  );
 }
 
 /**
@@ -112,33 +120,33 @@ function isPrimitive(value: any): value is Primitive {
  * @param obj
  */
 export function cloneDeep<T>(obj: T): T {
-    // Handle primitives (null, undefined, boolean, string, number, function)
-    if (isPrimitive(obj)) {
-        return obj;
-    }
+  // Handle primitives (null, undefined, boolean, string, number, function)
+  if (isPrimitive(obj)) {
+    return obj;
+  }
 
-    // Handle Date
-    if (obj instanceof Date) {
-        return new Date(obj.getTime()) as any as T;
-    }
+  // Handle Date
+  if (obj instanceof Date) {
+    return new Date(obj.getTime()) as any as T;
+  }
 
-    // Handle Array
-    if (Array.isArray(obj)) {
-        return obj.map(item => cloneDeep(item)) as any as T;
-    }
+  // Handle Array
+  if (Array.isArray(obj)) {
+    return obj.map((item) => cloneDeep(item)) as any as T;
+  }
 
-    // Handle Object
-    if (obj instanceof Object) {
-        const clonedObj: any = {};
-        for (const key in obj) {
-            if (obj.hasOwnProperty(key)) {
-                clonedObj[key] = cloneDeep((obj as any)[key]);
-            }
-        }
-        return clonedObj as T;
+  // Handle Object
+  if (obj instanceof Object) {
+    const clonedObj: any = {};
+    for (const key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        clonedObj[key] = cloneDeep((obj as any)[key]);
+      }
     }
+    return clonedObj as T;
+  }
 
-    throw new Error("Unable to copy object! Its type isn't supported.");
+  throw new Error("Unable to copy object! Its type isn't supported.");
 }
 
 /**
@@ -148,43 +156,59 @@ export function cloneDeep<T>(obj: T): T {
  * @param value
  */
 export function set(obj: object, path: string, value: any): void {
-    const keys = path.split('.');
-    let current: any = obj;
+  const keys = path.split('.');
+  let current: any = obj;
 
-    for (let i = 0; i < keys.length - 1; i++) {
-        const key = keys[i];
-        if (!current[key]) {
-            current[key] = {};
-        }
-        current = current[key];
+  for (let i = 0; i < keys.length - 1; i++) {
+    const key = keys[i];
+    if (!current[key]) {
+      current[key] = {};
     }
+    current = current[key];
+  }
 
-    current[keys[keys.length - 1]] = value;
+  current[keys[keys.length - 1]] = value;
 }
 
-export function getAllFormErrors(form?: AbstractControl): Record<string, string> {
-    const errors: Record<string, string> = {};
-    if (!form) {
-        return errors;
-    }
-    function collect(control: AbstractControl, path: string): void {
-        if (control instanceof FormGroup || control instanceof FormArray) {
-            Object.keys(control.controls).forEach((key) => {
-                const childControl = control.get(key);
-                const controlPath = path ? `${path}.${key}` : key;
-                if (childControl) {
-                    collect(childControl, controlPath);
-                }
-            });
-        }
-
-        if (control.errors && control.enabled) {
-            errors[path] = control.errors['errors'];
-        }
-    }
-
-    collect(form, '');
-    errors[ROOT_FORM] = form.errors && form.errors!['errors'];
-
+/**
+ * Traverses the form and returns the errors by path
+ * @param form
+ */
+export function getAllFormErrors(
+  form?: AbstractControl
+): Record<string, string> {
+  const errors: Record<string, string> = {};
+  if (!form) {
     return errors;
+  }
+
+  function collect(control: AbstractControl, path: string): void {
+    if (control instanceof FormGroup || control instanceof FormArray) {
+      Object.keys(control.controls).forEach((key) => {
+        const childControl = control.get(key);
+        const controlPath = path ? `${path}.${key}` : key;
+        if (path && control.errors && control.enabled) {
+          Object.keys(control.errors).forEach((errorKey) => {
+            errors[path] = control.errors![errorKey];
+          });
+        }
+        if (childControl) {
+          collect(childControl, controlPath);
+        }
+      });
+    } else {
+      if (control.errors && control.enabled) {
+        Object.keys(control.errors).forEach((errorKey) => {
+          errors[path] = control.errors![errorKey];
+        });
+      }
+    }
+  }
+
+  collect(form, '');
+  if (form.errors && form.errors!['errors']) {
+    errors[ROOT_FORM] = form.errors && form.errors!['errors'];
+  }
+
+  return errors;
 }

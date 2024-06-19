@@ -13,7 +13,11 @@
   "dependencies": {
     "tslib": "^2.3.0"
   },
-  "keywords": ["Angular", "Forms", "Signals"],
+  "keywords": [
+    "Angular",
+    "Forms",
+    "Signals"
+  ],
   "repository": "https://github.com/simplifiedcourses/ngx-vest-forms",
   "sideEffects": false
 }

@@ -1,11 +1,21 @@
-<div class="sm:col-span-2 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-  <h3 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">&#64;simplified/forms DEMO</h3>
+<div
+  class="sm:col-span-2 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+>
+  <h3 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
+    &#64;simplified/forms DEMO
+  </h3>
   <ul class="text-md list-disc ml-4">
     <li>Show validation errors on blur</li>
     <li>Show validation errors on submit</li>
     <li>When first name is <strong>Brecht</strong>: Set gender to male</li>
-    <li>When first name is <strong>Brecht</strong> and last name is <strong>Billiet</strong>: Set age and passwords</li>
-    <li>When first name is <strong>Luke</strong>: Fetch <strong>Luke Skywalker from the swapi api</strong></li>
+    <li>
+      When first name is <strong>Brecht</strong> and last name is
+      <strong>Billiet</strong>: Set age and passwords
+    </li>
+    <li>
+      When first name is <strong>Luke</strong>: Fetch
+      <strong>Luke Skywalker from the swapi api</strong>
+    </li>
     <li>When age is below 18, make Emergency contact required</li>
     <li>When age is of legal age, disable Emergency contact</li>
     <li>There should be at least one phone number</li>
@@ -17,70 +27,111 @@
     <li>Passwords should match, but only check if both are filled in</li>
     <li>Billing address is required</li>
     <li>Show shipping address only when needed (otherwise remove from DOM)</li>
-    <li>If shipping address is different from billing address, make it required</li>
-    <li>If shipping address is different from billing address, make sure they are not the same</li>
-    <li>When providing shipping address and toggling the checkbox back and forth, make sure the state is kept</li>
-    <li>When clicking the Fetch data button, load data, disable the form, and patch and re-enable the form</li>
+    <li>
+      If shipping address is different from billing address, make it required
+    </li>
+    <li>
+      If shipping address is different from billing address, make sure they are
+      not the same
+    </li>
+    <li>
+      When providing shipping address and toggling the checkbox back and forth,
+      make sure the state is kept
+    </li>
+    <li>
+      When clicking the Fetch data button, load data, disable the form, and
+      patch and re-enable the form
+    </li>
     <li>When the user id is taken, perform async validation</li>
     <li>
-      Try to set the firstName to Brecht lastName to Billiet,
-      Now change the age to 30.
-      It shows how we can do validations on the root
+      Try to set the firstName to Brecht lastName to Billiet, Now change the age
+      to 30. It shows how we can do validations on the root
     </li>
   </ul>
   <button class="mt-6" (click)="fetchData()">Fetch data</button>
-  <br>
+  <br />
 </div>
 
 <pre>{{ vm.errors?.['rootForm'] }}</pre>
 
 @if (vm.errors?.['rootForm']) {
-  <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+  <div
+    class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+    role="alert"
+  >
     {{ vm.errors?.['rootForm'] }}
   </div>
 }
 
-<form class="mt-8" scVestForm (ngSubmit)="onSubmit()"
-      [formValue]="formValue()"
-      [validateRootForm]="true"
-      [formShape]="shape"
-      [suite]="suite"
-      [validationConfig]="validationConfig"
-      (validChange)="formValid.set($event)"
-      (errorsChange)="errors.set($event)"
-      (formValueChange)="setFormValue($event)">
+<form
+  class="mt-8"
+  scVestForm
+  (ngSubmit)="onSubmit()"
+  [formValue]="formValue()"
+  [validateRootForm]="true"
+  [formShape]="shape"
+  [suite]="suite"
+  [validationConfig]="validationConfig"
+  (validChange)="formValid.set($event)"
+  (errorsChange)="errors.set($event)"
+  (formValueChange)="setFormValue($event)"
+>
   <fieldset [disabled]="vm.loading">
     <h1 class="text-4xl">Purchase form</h1>
     <div class="sm:col-span-2" sc-control-wrapper>
       <label>
         <span>User id</span>
-        <input placeholder="Type user id" type="text" [ngModel]="vm.formValue.userId" name="userId"/>
+        <input
+          placeholder="Type user id"
+          type="text"
+          [ngModel]="vm.formValue.userId"
+          name="userId"
+        />
       </label>
     </div>
     <div class="w-full" sc-control-wrapper>
       <label>
         <span>First name</span>
-        <input placeholder="Type your first name" type="text" [ngModel]="vm.formValue.firstName" name="firstName"/>
+        <input
+          placeholder="Type your first name"
+          type="text"
+          [ngModel]="vm.formValue.firstName"
+          name="firstName"
+        />
       </label>
     </div>
     <div class="w-full" sc-control-wrapper>
       <label>
         <span>Last name</span>
-        <input placeholder="Type your last name" type="text" [ngModel]="vm.formValue.lastName" name="lastName"/>
+        <input
+          placeholder="Type your last name"
+          type="text"
+          [ngModel]="vm.formValue.lastName"
+          name="lastName"
+        />
       </label>
     </div>
     <div class="w-full" sc-control-wrapper>
       <label>
         <span>Age</span>
-        <input placeholder="Choose your age" type="number" [ngModel]="vm.formValue.age" name="age"/>
+        <input
+          placeholder="Choose your age"
+          type="number"
+          [ngModel]="vm.formValue.age"
+          name="age"
+        />
       </label>
     </div>
     <div class="w-full" sc-control-wrapper>
       <label>
         <span>Emergency contact</span>
-        <input placeholder="Type your emergency contact" type="text" [disabled]="vm.emergencyContactDisabled"
-               [ngModel]="vm.formValue.emergencyContact"
-               name="emergencyContact"/>
+        <input
+          placeholder="Type your emergency contact"
+          type="text"
+          [disabled]="vm.emergencyContactDisabled"
+          [ngModel]="vm.formValue.emergencyContact"
+          name="emergencyContact"
+        />
       </label>
     </div>
     <div class="sm:col-span-2" sc-control-wrapper ngModelGroup="phonenumbers">
@@ -88,7 +139,8 @@
       </phonenumbers>
     </div>
     <div
-      class="sm:col-span-2 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+      class="sm:col-span-2 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+    >
       <div class="" sc-control-wrapper>
         <label><span>Gender</span></label>
         <div class="flex">
@@ -128,8 +180,11 @@
         <div class="sm:col-span-2" sc-control-wrapper>
           <label>
             <span>Specify gender</span>
-            <input type="text" [ngModel]="vm.formValue.genderOther"
-                   name="genderOther">
+            <input
+              type="text"
+              [ngModel]="vm.formValue.genderOther"
+              name="genderOther"
+            />
           </label>
         </div>
       }
@@ -140,18 +195,26 @@
         <div class="w-full" sc-control-wrapper>
           <label>
             <span>Password</span>
-            <input placeholder="Type password" type="password" [ngModel]="vm.formValue.passwords?.password" name="password"/>
+            <input
+              placeholder="Type password"
+              type="password"
+              [ngModel]="vm.formValue.passwords?.password"
+              name="password"
+            />
           </label>
         </div>
         <div class="w-full" sc-control-wrapper>
           <label>
             <span>Confirm</span>
-            <input placeholder="Confirm password" type="password" [ngModel]="vm.formValue.passwords?.confirmPassword"
-                   name="confirmPassword"/>
+            <input
+              placeholder="Confirm password"
+              type="password"
+              [ngModel]="vm.formValue.passwords?.confirmPassword"
+              name="confirmPassword"
+            />
           </label>
         </div>
       </div>
-
     </div>
     <div class="sm:col-span-2" sc-control-wrapper>
       <label>
@@ -170,9 +233,13 @@
       </div>
       <label sc-control-wrapper>
         <span>Shipping address is different from billing address</span>
-        <input type="checkbox"
-               [ngModel]="vm.formValue.addresses?.shippingAddressDifferentFromBillingAddress"
-               name="shippingAddressDifferentFromBillingAddress">
+        <input
+          type="checkbox"
+          [ngModel]="
+            vm.formValue.addresses?.shippingAddressDifferentFromBillingAddress
+          "
+          name="shippingAddressDifferentFromBillingAddress"
+        />
       </label>
       @if (vm.showShippingAddress) {
         <div sc-control-wrapper ngModelGroup="shippingAddress">
@@ -186,12 +253,11 @@
       <button type="submit">Submit</button>
     </div>
   </fieldset>
-
 </form>
-<br>
+<br />
 <p>Valid: {{ vm.formValid }}</p>
 
 <h3>The value of the form</h3>
 <pre id="json-data">
-  {{ vm.formValue|json }}
+  {{ vm.formValue | json }}
 </pre>

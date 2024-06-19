@@ -1,7 +1,10 @@
 import { AddressModel } from '../models/address.model';
 import { enforce, test } from 'vest';
 
-export function addressValidations(model: AddressModel | undefined, field: string): void {
+export function addressValidations(
+  model: AddressModel | undefined,
+  field: string
+): void {
   test(`${field}.street`, 'Street is required', () => {
     enforce(model?.street).isNotBlank();
   });

@@ -1,5 +1,10 @@
 import { Optional, Provider } from '@angular/core';
-import { ControlContainer, FormsModule, NgForm, NgModelGroup } from '@angular/forms';
+import {
+  ControlContainer,
+  FormsModule,
+  NgForm,
+  NgModelGroup,
+} from '@angular/forms';
 import { ValidateRootFormDirective } from './directives/validate-root-form.directive';
 import { ControlWrapperComponent } from './components/control-wrapper/control-wrapper.component';
 import { FormDirective } from './directives/form.directive';
@@ -44,13 +49,11 @@ const formViewProvider: Provider = {
   useFactory: _formViewProviderFactory,
   deps: [
     [new Optional(), NgForm],
-    [new Optional(), NgModelGroup]
-  ]
+    [new Optional(), NgModelGroup],
+  ],
 };
 
-function _formViewProviderFactory(
-  ngForm: NgForm, ngModelGroup: NgModelGroup
-) {
+function _formViewProviderFactory(ngForm: NgForm, ngModelGroup: NgModelGroup) {
   return ngModelGroup || ngForm || null;
 }
 
@@ -59,10 +62,17 @@ function _formViewProviderFactory(
  */
 export const vestFormsViewProviders = [
   { provide: ControlContainer, useExisting: NgForm },
-  formViewProvider // very important if we want nested components with ngModelGroup
-]
+  formViewProvider, // very important if we want nested components with ngModelGroup
+];
 
 /**
  * Exports all the stuff we need to use the template driven forms
  */
-export const vestForms = [ValidateRootFormDirective, ControlWrapperComponent, FormDirective, FormsModule, FormModelDirective, FormModelGroupDirective] as const;
+export const vestForms = [
+  ValidateRootFormDirective,
+  ControlWrapperComponent,
+  FormDirective,
+  FormsModule,
+  FormModelDirective,
+  FormModelGroupDirective,
+] as const;

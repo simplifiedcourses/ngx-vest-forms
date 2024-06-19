@@ -1,17 +1,24 @@
-import { EmailValidator, FormArray, FormControl, FormGroup, RequiredValidator, Validators } from '@angular/forms';
+import {
+  EmailValidator,
+  FormArray,
+  FormControl,
+  FormGroup,
+  RequiredValidator,
+  Validators,
+} from '@angular/forms';
 import {
   cloneDeep,
   getAllFormErrors,
   getFormControlField,
   getFormGroupField,
   mergeValuesAndRawValues,
-  set
+  set,
 } from './form-utils';
 
 describe('getFormControlField function', () => {
   it('should return correct field name for FormControl in root FormGroup', () => {
     const form = new FormGroup({
-      name: new FormControl('John')
+      name: new FormControl('John'),
     });
     expect(getFormControlField(form, form.controls.name)).toBe('name');
   });
@@ -19,10 +26,12 @@ describe('getFormControlField function', () => {
   it('should return correct field name for FormControl in nested FormGroup', () => {
     const form = new FormGroup({
       personal: new FormGroup({
-        name: new FormControl('John')
-      })
+        name: new FormControl('John'),
+      }),
     });
-    expect(getFormControlField(form, form.get('personal')!.get('name')!)).toBe('personal.name');
+    expect(getFormControlField(form, form.get('personal')!.get('name')!)).toBe(
+      'personal.name'
+    );
   });
 });
 
@@ -30,8 +39,8 @@ describe('getFormGroupField function', () => {
   it('should return correct field name for FormGroup in root FormGroup', () => {
     const form = new FormGroup({
       personal: new FormGroup({
-        name: new FormControl('John')
-      })
+        name: new FormControl('John'),
+      }),
     });
     expect(getFormGroupField(form, form.controls.personal)).toBe('personal');
   });
@@ -40,11 +49,13 @@ describe('getFormGroupField function', () => {
     const form = new FormGroup({
       personal: new FormGroup({
         contact: new FormGroup({
-          email: new FormControl('john@example.com')
-        })
-      })
+          email: new FormControl('john@example.com'),
+        }),
+      }),
     });
-    expect(getFormGroupField(form, form.get('personal')!.get('contact')!)).toBe('personal.contact');
+    expect(getFormGroupField(form, form.get('personal')!.get('contact')!)).toBe(
+      'personal.contact'
+    );
   });
 });
 
@@ -55,8 +66,8 @@ describe('mergeValuesAndRawValues function', () => {
       age: new FormControl(30),
       address: new FormGroup({
         city: new FormControl('New York'),
-        zip: new FormControl(12345)
-      })
+        zip: new FormControl(12345),
+      }),
     });
     form.get('name')!.disable(); // Simulate a disabled field
     const mergedValues = mergeValuesAndRawValues(form);
@@ -65,8 +76,8 @@ describe('mergeValuesAndRawValues function', () => {
       age: 30,
       address: {
         city: 'New York',
-        zip: 12345
-      }
+        zip: 12345,
+      },
     });
   });
 });
@@ -78,8 +89,8 @@ describe('cloneDeep function', () => {
       age: 30,
       address: {
         city: 'New York',
-        zip: 12345
-      }
+        zip: 12345,
+      },
     };
     const cloned = cloneDeep(original);
     expect(cloned).toEqual(original);
@@ -93,8 +104,8 @@ describe('set function', () => {
     set(obj, 'address.city', 'New York');
     expect(obj).toEqual({
       address: {
-        city: 'New York'
-      }
+        city: 'New York',
+      },
     });
   });
 });

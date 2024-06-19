@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/simplifiedcourses/ngx-vest-forms/compare/v1.0.2...v1.0.3) (2024-06-19)
+
+
+### Bug Fixes
+
+* **ngx-vest-forms:** fixed some bugs, cleaned up code, ci stuff ([ee9860d](https://github.com/simplifiedcourses/ngx-vest-forms/commit/ee9860de39d6d63b32523661164d2bc5cf807ffb))
+
 ## [1.0.2](https://github.com/simplifiedcourses/ngx-vest-forms/compare/v1.0.1...v1.0.2) (2024-06-12)
 
 

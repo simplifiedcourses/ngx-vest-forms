@@ -584,3 +584,8 @@ export class AddressComponent {
 ```
 
 You can check the examples in the github repo [here](https://github.com/simplifiedcourses/ngx-vest-forms/blob/master/projects/examples).
+
+## Want to learn more?
+[![course.jpeg](course.jpeg)](https://www.simplified.courses/complex-angular-template-driven-forms)
+
+[This course](https://www.simplified.courses/complex-angular-template-driven-forms) teaches you to become a form expert in no time.

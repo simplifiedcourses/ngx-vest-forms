@@ -1,10 +1,10 @@
-import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
-import { AddressModel } from '../../models/address.model';
 import { vestForms, vestFormsViewProviders } from 'ngx-vest-forms';
+import { AddressModel } from '../../../models/address.model';
 
 @Component({
-  selector: 'address',
+  selector: 'sc-address',
   standalone: true,
   imports: [vestForms],
   viewProviders: [vestFormsViewProviders],

@@ -1,5 +1,5 @@
 import { enforce, omitWhen, only, staticSuite, test } from 'vest';
-import { PurchaseFormModel } from '../models/purchaseFormModel';
+import { PurchaseFormModel } from '../models/purchase-form.model';
 import { addressValidations } from './address.validations';
 import { phonenumberValidations } from './phonenumber.validations';
 import { SwapiService } from '../swapi.service';

@@ -2,7 +2,7 @@
   class="sm:col-span-2 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
 >
   <h3 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
-    ngx-vest-forms DEMO
+    Example: complex form with comples validations and conditionals
   </h3>
   <ul class="text-md list-disc ml-4">
     <li>Show validation errors on blur</li>
@@ -135,8 +135,8 @@
       </label>
     </div>
     <div class="sm:col-span-2" sc-control-wrapper ngModelGroup="phonenumbers">
-      <phonenumbers [values]="vm.formValue.phonenumbers?.values || {}">
-      </phonenumbers>
+      <sc-phonenumbers [values]="vm.formValue.phonenumbers?.values || {}">
+      </sc-phonenumbers>
     </div>
     <div
       class="sm:col-span-2 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
@@ -229,7 +229,9 @@
     <div class="sm:col-span-2" sc-control-wrapper ngModelGroup="addresses">
       <div sc-control-wrapper ngModelGroup="billingAddress">
         <h3 class="text-2xl">Billing address</h3>
-        <address [address]="vm.formValue.addresses?.billingAddress"></address>
+        <sc-address
+          [address]="vm.formValue.addresses?.billingAddress"
+        ></sc-address>
       </div>
       <label sc-control-wrapper>
         <span>Shipping address is different from billing address</span>
@@ -244,7 +246,7 @@
       @if (vm.showShippingAddress) {
         <div sc-control-wrapper ngModelGroup="shippingAddress">
           <h3 class="text-2xl">Shipping Address</h3>
-          <address [address]="vm.shippingAddress"></address>
+          <sc-address [address]="vm.shippingAddress"></sc-address>
         </div>
       }
     </div>

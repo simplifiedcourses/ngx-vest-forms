@@ -619,8 +619,7 @@ This validationConfig is completely dynamic, and can also be used for form array
 #### Form array validations
 
 An example can be found [in this simplified courses article](https://blog.simplified.courses/template-driven-forms-with-form-arrays/)
-
-We can look in `projects/examples/src/app/validations/phonenumber.validations.ts` to see an example on the validations part.
+There is also a complex example of form arrays with complex validations in the examples.
 
 
 ### Child form components
@@ -642,6 +641,18 @@ export class AddressComponent {
   @Input() address?: AddressModel;
 }
 ```
+
+# Examples
+to check the examples, clone this repo and run:
+```shell
+npm i
+npm start
+```
+
+There is an example of a complex form with a lot of conditionals and specifics,
+and there is an example of a form array with complex validations that is used to
+create a form to add business hours. A free tutorial will follow soon.
+
 
 You can check the examples in the github repo [here](https://github.com/simplifiedcourses/ngx-vest-forms/blob/master/projects/examples).
 [Here](https://stackblitz.com/~/github.com/simplifiedcourses/ngx-vest-forms-stackblitz){:target="_blank"} is a stackblitz example for you.

@@ -1,22 +1,22 @@
+import { ValidateRootFormDirective, vestForms } from 'ngx-vest-forms';
 import { Component, computed, effect, inject, signal } from '@angular/core';
 import { JsonPipe } from '@angular/common';
-import { ProductService } from '../../product.service';
+import { AddressComponent } from '../../ui/address/address.component';
+import { PhonenumbersComponent } from '../../ui/phonenumbers/phonenumbers.component';
+import { LukeService } from '../../../luke.service';
+import { SwapiService } from '../../../swapi.service';
+import { ProductService } from '../../../product.service';
 import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 import {
   PurchaseFormModel,
   purchaseFormShape,
-} from '../../models/purchaseFormModel';
-import { AddressComponent } from '../address/address.component';
+} from '../../../models/purchase-form.model';
+import { createPurchaseValidationSuite } from '../../../validations/purchase.validations';
+import { AddressModel } from '../../../models/address.model';
 import { debounceTime, filter, switchMap } from 'rxjs';
-import { LukeService } from '../../luke.service';
-import { PhonenumbersComponent } from '../phonenumbers/phonenumbers.component';
-import { AddressModel } from '../../models/address.model';
-import { createPurchaseValidationSuite } from '../../validations/purchase.validations';
-import { vestForms, ValidateRootFormDirective } from 'ngx-vest-forms';
-import { SwapiService } from '../../swapi.service';
 
 @Component({
-  selector: 'purchase-form',
+  selector: 'sc-purchase-form',
   standalone: true,
   imports: [
     JsonPipe,

@@ -7,7 +7,7 @@ import {
 } from 'ngx-vest-forms';
 
 @Component({
-  selector: 'phonenumbers',
+  selector: 'sc-phonenumbers',
   standalone: true,
   imports: [CommonModule, vestForms, KeyValuePipe],
   templateUrl: './phonenumbers.component.html',

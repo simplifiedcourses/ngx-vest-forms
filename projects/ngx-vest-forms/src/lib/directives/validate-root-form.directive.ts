@@ -1,4 +1,4 @@
-import { Directive, input, OnDestroy } from '@angular/core';
+import { Directive, inject, input, OnDestroy } from '@angular/core';
 import {
   AbstractControl,
   AsyncValidator,
@@ -18,6 +18,7 @@ import {
 } from 'rxjs';
 import { StaticSuite } from 'vest';
 import { cloneDeep, set } from '../utils/form-utils';
+import { ValidationOptions, ValidationOptionsDirective } from './validation-options.directive';
 
 @Directive({
   selector: 'form[validateRootForm][formValue][suite]',
@@ -32,6 +33,7 @@ import { cloneDeep, set } from '../utils/form-utils';
 })
 export class ValidateRootFormDirective<T> implements AsyncValidator, OnDestroy {
   private readonly destroy$$ = new Subject<void>();
+  private readonly validationOptionsDirective = inject(ValidationOptionsDirective, { self: true, optional: true });
 
   public readonly formValue = input<T | null>(null);
   public readonly suite = input<StaticSuite<
@@ -62,12 +64,13 @@ export class ValidateRootFormDirective<T> implements AsyncValidator, OnDestroy {
     if (!this.suite() || !this.formValue()) {
       return of(null);
     }
-    return this.createAsyncValidator('rootForm')(
+    const validationOptions = this.validationOptionsDirective?.validationOptions() || { debounceTime: 0 };
+    return this.createAsyncValidator('rootForm', validationOptions)(
       control.getRawValue()
     ) as Observable<ValidationErrors | null>;
   }
 
-  public createAsyncValidator(field: string): AsyncValidatorFn {
+  public createAsyncValidator(field: string, validationOptions: ValidationOptions): AsyncValidatorFn {
     if (!this.suite()) {
       return () => of(null);
     }
@@ -83,7 +86,7 @@ export class ValidateRootFormDirective<T> implements AsyncValidator, OnDestroy {
         };
         this.formValueCache[field].debounced = this.formValueCache[
           field
-        ].sub$$!.pipe(debounceTime(0));
+          ].sub$$!.pipe(debounceTime(validationOptions.debounceTime));
       }
       // Next the latest model in the cache for a certain field
       this.formValueCache[field].sub$$!.next(mod);

@@ -485,6 +485,29 @@ omitWhen(
 );
 ```
 
+### Validation options
+
+The validation is triggered immediately when the input on the formModel changes.  
+In some cases you want to debounce the input (e.g. if you make an api call in the validation suite).
+
+You can configure additional `validationOptions` at various levels like `form`, `ngModelGroup` or `ngModel`. 
+
+```html
+
+<form scVestForm
+      ...
+      [validationOptions]="{ debounceTime: 0 }">
+    ...
+    <div sc-control-wrapper>
+        <label>UserId</label>
+        <input type="text" name="userId" [ngModel]="formValue().userId?"
+               [validationOptions]="{ debounceTime: 300 }"/>
+    </div>
+    ...
+</form>
+```
+
+
 ### Validations on the root form
 
 When we want to validate multiple fields that are depending on each other,

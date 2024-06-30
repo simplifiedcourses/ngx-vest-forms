@@ -1,4 +1,4 @@
-import { Directive, inject, input, OnDestroy } from '@angular/core';
+import { Directive, input, OnDestroy } from '@angular/core';
 import {
   AbstractControl,
   AsyncValidator,
@@ -18,7 +18,7 @@ import {
 } from 'rxjs';
 import { StaticSuite } from 'vest';
 import { cloneDeep, set } from '../utils/form-utils';
-import { ValidationOptions, ValidationOptionsDirective } from './validation-options.directive';
+import { ValidationOptions } from './validation-options';
 
 @Directive({
   selector: 'form[validateRootForm][formValue][suite]',
@@ -32,8 +32,8 @@ import { ValidationOptions, ValidationOptionsDirective } from './validation-opti
   ],
 })
 export class ValidateRootFormDirective<T> implements AsyncValidator, OnDestroy {
+  public validationOptions = input<ValidationOptions>({ debounceTime: 0 });
   private readonly destroy$$ = new Subject<void>();
-  private readonly validationOptionsDirective = inject(ValidationOptionsDirective, { self: true, optional: true });
 
   public readonly formValue = input<T | null>(null);
   public readonly suite = input<StaticSuite<
@@ -64,8 +64,7 @@ export class ValidateRootFormDirective<T> implements AsyncValidator, OnDestroy {
     if (!this.suite() || !this.formValue()) {
       return of(null);
     }
-    const validationOptions = this.validationOptionsDirective?.validationOptions() || { debounceTime: 0 };
-    return this.createAsyncValidator('rootForm', validationOptions)(
+    return this.createAsyncValidator('rootForm', this.validationOptions())(
       control.getRawValue()
     ) as Observable<ValidationErrors | null>;
   }

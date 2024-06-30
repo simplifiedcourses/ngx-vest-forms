@@ -33,7 +33,7 @@ import {
   set,
 } from '../utils/form-utils';
 import { validateShape } from '../utils/shape-validation';
-import { ValidationOptions } from './validation-options.directive';
+import { ValidationOptions } from './validation-options';
 
 @Directive({
   selector: 'form[scVestForm]',

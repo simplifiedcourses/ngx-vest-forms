@@ -10,7 +10,6 @@ import { ControlWrapperComponent } from './components/control-wrapper/control-wr
 import { FormDirective } from './directives/form.directive';
 import { FormModelDirective } from './directives/form-model.directive';
 import { FormModelGroupDirective } from './directives/form-model-group.directive';
-import { ValidationOptionsDirective } from './directives/validation-options.directive';
 
 /**
  * This is borrowed from  [https://github.com/wardbell/ngc-validate/blob/main/src/app/core/form-container-view-provider.ts](https://github.com/wardbell/ngc-validate/blob/main/src/app/core/form-container-view-provider.ts)
@@ -76,5 +75,4 @@ export const vestForms = [
   FormsModule,
   FormModelDirective,
   FormModelGroupDirective,
-  ValidationOptionsDirective,
 ] as const;

@@ -1,3 +1,12 @@
+# [1.1.0](https://github.com/simplifiedcourses/ngx-vest-forms/compare/v1.0.3...v1.1.0) (2024-07-17)
+
+
+### Features
+
+* **validationOptions:** adds storybook test cases ([e535fa0](https://github.com/simplifiedcourses/ngx-vest-forms/commit/e535fa0da18764bdeba6e12911eeaaac90885a02))
+* **validationOptions:** adds support for dynamic validation options ([e9ab6a0](https://github.com/simplifiedcourses/ngx-vest-forms/commit/e9ab6a0bd6ec1dbc182f40292863ebc87b63b913))
+* **validationOptions:** adds support for dynamic validation options ([ceaa103](https://github.com/simplifiedcourses/ngx-vest-forms/commit/ceaa10300f3a6392655542369ef9d7d1faa6b856))
+
 ## [1.0.3](https://github.com/simplifiedcourses/ngx-vest-forms/compare/v1.0.2...v1.0.3) (2024-06-19)
 
 

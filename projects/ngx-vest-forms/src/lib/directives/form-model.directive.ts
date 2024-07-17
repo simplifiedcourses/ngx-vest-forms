@@ -1,4 +1,4 @@
-import { Directive, inject } from '@angular/core';
+import { Directive, inject, input } from '@angular/core';
 import {
   AbstractControl,
   AsyncValidator,
@@ -8,6 +8,7 @@ import {
 import { FormDirective } from './form.directive';
 import { Observable } from 'rxjs';
 import { getFormControlField } from '../utils/form-utils';
+import { ValidationOptions } from './validation-options';
 
 /**
  * Hooks into the ngModel selector and triggers an asynchronous validation for a form model
@@ -25,13 +26,15 @@ import { getFormControlField } from '../utils/form-utils';
   ],
 })
 export class FormModelDirective implements AsyncValidator {
+  public validationOptions = input<ValidationOptions>({ debounceTime: 0 });
   private readonly formDirective = inject(FormDirective);
+
   public validate(
     control: AbstractControl
   ): Observable<ValidationErrors | null> {
     const { ngForm, suite, formValue } = this.formDirective;
     const field = getFormControlField(ngForm.control, control);
-    return this.formDirective.createAsyncValidator(field)(
+    return this.formDirective.createAsyncValidator(field, this.validationOptions())(
       control.getRawValue()
     ) as Observable<ValidationErrors | null>;
   }

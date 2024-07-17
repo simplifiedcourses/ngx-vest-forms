@@ -18,6 +18,7 @@ import {
 } from 'rxjs';
 import { StaticSuite } from 'vest';
 import { cloneDeep, set } from '../utils/form-utils';
+import { ValidationOptions } from './validation-options';
 
 @Directive({
   selector: 'form[validateRootForm][formValue][suite]',
@@ -31,6 +32,7 @@ import { cloneDeep, set } from '../utils/form-utils';
   ],
 })
 export class ValidateRootFormDirective<T> implements AsyncValidator, OnDestroy {
+  public validationOptions = input<ValidationOptions>({ debounceTime: 0 });
   private readonly destroy$$ = new Subject<void>();
 
   public readonly formValue = input<T | null>(null);
@@ -62,12 +64,12 @@ export class ValidateRootFormDirective<T> implements AsyncValidator, OnDestroy {
     if (!this.suite() || !this.formValue()) {
       return of(null);
     }
-    return this.createAsyncValidator('rootForm')(
+    return this.createAsyncValidator('rootForm', this.validationOptions())(
       control.getRawValue()
     ) as Observable<ValidationErrors | null>;
   }
 
-  public createAsyncValidator(field: string): AsyncValidatorFn {
+  public createAsyncValidator(field: string, validationOptions: ValidationOptions): AsyncValidatorFn {
     if (!this.suite()) {
       return () => of(null);
     }
@@ -83,7 +85,7 @@ export class ValidateRootFormDirective<T> implements AsyncValidator, OnDestroy {
         };
         this.formValueCache[field].debounced = this.formValueCache[
           field
-        ].sub$$!.pipe(debounceTime(0));
+          ].sub$$!.pipe(debounceTime(validationOptions.debounceTime));
       }
       // Next the latest model in the cache for a certain field
       this.formValueCache[field].sub$$!.next(mod);

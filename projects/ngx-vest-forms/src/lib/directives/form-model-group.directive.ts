@@ -1,4 +1,4 @@
-import { Directive, inject } from '@angular/core';
+import { Directive, inject, input } from '@angular/core';
 import {
   AbstractControl,
   AsyncValidator,
@@ -8,6 +8,7 @@ import {
 import { FormDirective } from './form.directive';
 import { Observable } from 'rxjs';
 import { getFormGroupField } from '../utils/form-utils';
+import { ValidationOptions } from './validation-options';
 
 /**
  * Hooks into the ngModelGroup selector and triggers an asynchronous validation for a form group
@@ -25,6 +26,7 @@ import { getFormGroupField } from '../utils/form-utils';
   ],
 })
 export class FormModelGroupDirective implements AsyncValidator {
+  public validationOptions = input<ValidationOptions>({ debounceTime: 0 });
   private readonly formDirective = inject(FormDirective);
 
   public validate(
@@ -32,7 +34,7 @@ export class FormModelGroupDirective implements AsyncValidator {
   ): Observable<ValidationErrors | null> {
     const { ngForm } = this.formDirective;
     const field = getFormGroupField(ngForm.control, control);
-    return this.formDirective.createAsyncValidator(field)(
+    return this.formDirective.createAsyncValidator(field, this.validationOptions())(
       control.value
     ) as Observable<ValidationErrors | null>;
   }

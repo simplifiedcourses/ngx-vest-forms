@@ -33,6 +33,7 @@ import {
   set,
 } from '../utils/form-utils';
 import { validateShape } from '../utils/shape-validation';
+import { ValidationOptions } from './validation-options';
 
 @Directive({
   selector: 'form[scVestForm]',
@@ -215,11 +216,10 @@ export class FormDirective<T extends Record<string, any>> implements OnDestroy {
    * This will feed the formValueCache, debounce it till the next tick
    * and create an asynchronous validator that runs a vest suite
    * @param field
-   * @param model
-   * @param suite
+   * @param validationOptions
    * @returns an asynchronous validator function
    */
-  public createAsyncValidator(field: string): AsyncValidatorFn {
+  public createAsyncValidator(field: string, validationOptions: ValidationOptions): AsyncValidatorFn {
     if (!this.suite()) {
       return () => of(null);
     }
@@ -235,7 +235,7 @@ export class FormDirective<T extends Record<string, any>> implements OnDestroy {
         };
         this.formValueCache[field].debounced = this.formValueCache[
           field
-        ].sub$$!.pipe(debounceTime(0));
+          ].sub$$!.pipe(debounceTime(validationOptions.debounceTime));
       }
       // Next the latest model in the cache for a certain field
       this.formValueCache[field].sub$$!.next(mod);

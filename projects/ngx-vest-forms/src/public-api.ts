@@ -25,3 +25,4 @@ export { FormModelDirective } from './lib/directives/form-model.directive';
 export { FormModelGroupDirective } from './lib/directives/form-model-group.directive';
 export { ValidateRootFormDirective } from './lib/directives/validate-root-form.directive';
 export { ValidationOptions } from './lib/directives/validation-options';
+export { FormErrorsControlDirective } from './lib/directives/form-errors-control.directive';
